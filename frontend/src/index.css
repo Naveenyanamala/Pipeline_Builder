@@ -1,0 +1,520 @@
+:root {
+  --vs-bg: #0b1220;
+  --vs-panel: rgba(255, 255, 255, 0.06);
+  --vs-panel2: rgba(255, 255, 255, 0.08);
+  --vs-border: rgba(255, 255, 255, 0.12);
+  --vs-text: rgba(255, 255, 255, 0.92);
+  --vs-muted: rgba(255, 255, 255, 0.62);
+  --vs-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+
+  --vs-radius: 14px;
+  --vs-radius-sm: 10px;
+  --vs-font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+
+  --vs-accent-blue: #6ea8ff;
+  --vs-accent-green: #6ef0b6;
+  --vs-accent-purple: #c4a0ff;
+  --vs-accent-orange: #ffb86b;
+  --vs-accent-slate: #b4c2d7;
+  --vs-accent-pink: #ff7bd1;
+  --vs-accent-yellow: #ffe38b;
+  --vs-accent-teal: #6fe7ff;
+  --vs-accent-indigo: #9aa9ff;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--vs-font);
+  background: #f3f4f6;
+  color: #0f172a;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+.vs-app {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+.vs-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border-right: 1px solid rgba(15, 23, 42, 0.10);
+  background: linear-gradient(180deg, #0b1220, #111827);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.vs-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.vs-brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 10px 14px 10px;
+}
+
+.vs-brandMark {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(110, 168, 255, 0.9), rgba(255, 123, 209, 0.75));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.vs-brandName {
+  font-weight: 750;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.vs-brandSub {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.60);
+}
+
+.vs-pipelineNameBlock {
+  padding: 4px 2px 14px 2px;
+}
+
+.vs-pipelineNameInput {
+  background: rgba(15, 23, 42, 0.85);
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.vs-pipelineNameInput::placeholder {
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.vs-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vs-toolbarTitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vs-toolbarGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vs-toolbarDivider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 8px 0;
+}
+
+.vs-paletteItem {
+  cursor: grab;
+  height: 56px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.06));
+  display: grid;
+  place-items: center;
+  user-select: none;
+}
+
+.vs-paletteItem:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
+}
+
+.vs-paletteItemLabel {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--vs-text);
+}
+
+.vs-sidebarFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vs-muted {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+}
+
+.vs-buttonPrimary {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: linear-gradient(135deg, rgba(110, 168, 255, 0.85), rgba(196, 160, 255, 0.75));
+  color: rgba(10, 15, 25, 0.92);
+  font-weight: 750;
+  border-radius: 12px;
+  padding: 12px 12px;
+  cursor: pointer;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.30);
+}
+
+.vs-buttonPrimary:hover {
+  filter: brightness(1.05);
+}
+
+.vs-buttonPrimary:active {
+  transform: translateY(1px);
+}
+
+.vs-canvas {
+  height: 100%;
+  min-height: 520px;
+}
+
+/* Node styling */
+.vs-node {
+  position: relative;
+  border-radius: var(--vs-radius);
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.14);
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.vs-nodeSelected {
+  outline: 2px solid color-mix(in srgb, var(--vs-nodeAccent) 70%, white 0%);
+  outline-offset: 2px;
+}
+
+.vs-nodeHeader {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0.02));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vs-nodeHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vs-nodeIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(15, 23, 42, 0.04);
+  font-weight: 750;
+}
+
+.vs-nodeTitle {
+  font-weight: 780;
+  font-size: 13px;
+  line-height: 1.2;
+  color: #0f172a;
+}
+
+.vs-nodeSubtitle {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.55);
+  margin-top: 2px;
+}
+
+.vs-nodeBody {
+  padding: 10px 2px;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.vs-nodeGrid {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.vs-nodeSummary {
+  display: grid;
+  gap: 8px;
+}
+
+.vs-nodeSummaryRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.vs-nodeSummaryKey {
+  font-size: 11px;
+  color: var(--vs-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.vs-nodeSummaryVal {
+  font-size: 12px;
+  color: var(--vs-text);
+  font-weight: 650;
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vs-nodeText {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.62);
+  line-height: 1.4;
+}
+
+.vs-nodeHint {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.vs-nodeFooterNote {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.vs-field {
+  display: grid;
+  gap: 6px;
+}
+
+.vs-fieldLabel {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.vs-input,
+.vs-select,
+.vs-textarea {
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 10px 10px;
+  outline: none;
+}
+
+.vs-textarea {
+  resize: none;
+  line-height: 1.4;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.vs-fieldTextarea {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.vs-input:focus,
+.vs-select:focus,
+.vs-textarea:focus {
+  border-color: rgba(110, 168, 255, 0.65);
+  box-shadow: 0 0 0 4px rgba(110, 168, 255, 0.18);
+}
+
+/* Layer so handles are always on top and receive connection drops */
+.vs-nodeHandleLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.vs-nodeHandleLayer .vs-handle {
+  pointer-events: auto;
+}
+
+.vs-handle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(15, 23, 42, 0.75);
+  background: #ffffff;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.vs-handle:hover {
+  background: #e0f2fe;
+  border-color: rgba(110, 168, 255, 0.8);
+  transform: scale(1.15);
+}
+
+.vs-handleLabel {
+  position: absolute;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: rgba(15, 23, 42, 0.65);
+  pointer-events: none;
+}
+
+.vs-handleLabelLeft {
+  left: -4px;
+  transform: translate(-100%, -50%);
+  text-align: right;
+}
+
+.vs-handleLabelRight {
+  right: -4px;
+  transform: translate(100%, -50%);
+  text-align: left;
+}
+
+/* Accent variants (drives header glow + subtle border tint) */
+.vs-nodeAccent-blue { --vs-nodeAccent: var(--vs-accent-blue); }
+.vs-nodeAccent-green { --vs-nodeAccent: var(--vs-accent-green); }
+.vs-nodeAccent-purple { --vs-nodeAccent: var(--vs-accent-purple); }
+.vs-nodeAccent-orange { --vs-nodeAccent: var(--vs-accent-orange); }
+.vs-nodeAccent-slate { --vs-nodeAccent: var(--vs-accent-slate); }
+.vs-nodeAccent-pink { --vs-nodeAccent: var(--vs-accent-pink); }
+.vs-nodeAccent-yellow { --vs-nodeAccent: var(--vs-accent-yellow); }
+.vs-nodeAccent-teal { --vs-nodeAccent: var(--vs-accent-teal); }
+.vs-nodeAccent-indigo { --vs-nodeAccent: var(--vs-accent-indigo); }
+
+.vs-node[class*="vs-nodeAccent-"] {
+  border-color: color-mix(in srgb, var(--vs-nodeAccent) 38%, rgba(255, 255, 255, 0.12));
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.14), 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+.vs-nodeHeader {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.vs-nodeHeader::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--vs-nodeAccent), transparent);
+  opacity: 0.9;
+}
+
+.vs-nodeHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vs-nodeIconButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.85);
+  color: rgba(15, 23, 42, 0.85);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.vs-nodeIconButton:hover {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.22);
+}
+
+.vs-nodeIconButtonDanger {
+  color: rgba(220, 38, 38, 0.95);
+}
+
+.vs-varSuggest {
+  display: grid;
+  gap: 8px;
+}
+
+.vs-varSuggestLabel {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.vs-varSuggestChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vs-chip {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(15, 23, 42, 0.04);
+  color: rgba(15, 23, 42, 0.85);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.vs-chip:hover {
+  background: rgba(110, 168, 255, 0.12);
+  border-color: rgba(110, 168, 255, 0.22);
+}
+
+.vs-chipDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ReactFlow tweaks */
+.react-flow__node {
+  overflow: visible;
+}
+
+.react-flow__attribution {
+  display: none;
+}
+
+.react-flow__controls button {
+  background: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #111827 !important;
+}
+
+.react-flow__minimap {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #d1d5db !important;
+}
+
